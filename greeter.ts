@@ -3,7 +3,7 @@ interface Person{
     surname: string;
 }
 
-function isPerson(object: any) : object is Person {
+function isPerson(object: any) : boolean {
     return 'name' in object && 'surname' in object;
     
 }
