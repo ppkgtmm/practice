@@ -1,4 +1,9 @@
-let printData = (
+// funcs that don't have name are anonymous funcs
+// e.g. let a = () => ... or a = function() ...
+
+// name one either sides can differ but order and type must be the same
+// optional params with no default value provided have to be after required params in arg
+let printData : (n: string | undefined, s: string, md?: string) => void = (
     name: string = "Anonymous",
     surname: string,
     middleName?: string): void => {
@@ -11,11 +16,13 @@ printData("Mary", "Brown");
 printData("Nick", "Johnan", "Jenes");
 printData(undefined, "Wilson");
 
+// rest params ( ... type[] ) must be last param, 
+// cannot use more than one rest param per func
 let printFriends = (
     name: string,
-    ...firends: string[]
+    ...friends: string[]
     ) : void => {
-        console.log(`${name}'s friends are ${firends.join(" ")}`)
+        console.log(`${name}'s friends are ${friends.join(" ")}`)
 }
 
 printFriends("Meme", "Jokes", "Pranks", "Franks", "Fun");
@@ -27,6 +34,24 @@ interface Card {
   
 let suits = ["hearts", "spades", "clubs", "diamonds"];
 
+// this = owner of statement's owner func (start from most specific)
+// if func is arrow func, it is not counted as owner
+
+class Handler {
+    info: string;
+    constructor(info : string | undefined) {
+        this.info = info || "no info";
+    }
+    onClick = () => {
+        console.log(`${this.info} is clicked`);
+    };
+}
+  
+let h = new Handler('button1');
+h.onClick()
+
+// overloading allow type checking for func call
+// should order overloading funcs from most specific to least specific
 function pickCard(x: Card[]): number;
 function pickCard(x: number): Card;
 function pickCard(x: any): any {
