@@ -1,10 +1,10 @@
 // cannot be instantiated directly
 abstract class Animal{
     // private name: string; // not accessible in child classes
-    protected readonly name: string;
+    // protected readonly name: string;
     static owner: string = 'me';
-    constructor(name: string) {
-        this.name = name;        
+    constructor(protected readonly name: string) {
+        // this.name = name;        
     }
     greet() {
         console.log(`I'm ${this.name}`);
@@ -32,7 +32,7 @@ class Cat extends Animal{
 const myCat = new Cat('Elle');
 myCat.meow();
 
-// run time error for readonly reassignment & access out-side class
+// error for readonly reassignment & access out-side class
 // myCat.name = 'Laura';
 
 const myPet: Animal = new Dog('Doggy');
