@@ -5,13 +5,13 @@ let isReady: boolean = false;
 console.log(`ready ? ${isReady ? 'Yes' : 'Not yet'}`)
 
 // number & big int
-let binary: number = 0b1001;
-let octal: number = 0o1727;
-let decimal: number = 1234;
-let hex: number = 0x6070;
-let bInt: bigint = 26914n;
+let binary: number = 0b1001; // start with 0b
+let octal: number = 0o1727; // start with 0o
+let decimal: number = 1234; 
+let hex: number = 0x6070; // start with 0x
+let bInt: bigint = 26914n; // end with n
 
-let sum: number = binary + octal + decimal + hex;
+let sum: number = binary + octal + decimal + hex; // base 10 result
 
 console.log(`sum = ${sum}, bigInt = ${bInt}`);
 
@@ -41,7 +41,7 @@ console.log(tuple[2]);
 
 // enum, used to give more friendly names to sets of numeric values.
 // default start with 0, increment by 1
-// if not found in enum result = undefined
+// if not found in enum, result = undefined
 // access enum by key, we will get value e.g. Size.M --> 3
 // access enum by value, we will get key e.g. Size[3] --> M
 enum Size {
@@ -57,6 +57,11 @@ console.log(Size[3], Size.M);
 console.log(`Is ${Size[sizeNumber]} = ${product} ?`);
 console.log(`number ${sizeNumber} is of size ${Size[sizeNumber]}`);
 
+// not found
+console.log(Size[9]); // undefined
+// console.log(Size.XS); // error key not found
+
+
 
 // unknown (for unknown types of variables when we are writing application)
 let a: number = 123;
@@ -65,11 +70,13 @@ let b: unknown = 456;
 if(typeof b == "number")
     a = b;
 console.log(a);
+b = a
+console.log(b, typeof b); // type of b changed to more specific type i.e. number
 
 // ts does not check type of variable with type any
-// using the --strictNullChecks flag, null and undefined are only assignable to unknown,
-// any and their respective types
-// the one exception being that undefined is also assignable to void. 
+
+// when using the --strictNullChecks flag, null and undefined are only assignable to 
+// unknown, any and their respective types. Also, undefined is assignable to void. 
 
 // void, used for return type of func with no return value
 let printEqual: (a : any, b: any) => void = (
@@ -118,5 +125,3 @@ let str: unknown = "this is a string";
 let strLen: number = (str as string).length;
 
 let len: number = (<string>str).length;
-
-// NOTE: primitive ts types start with lowercase letters

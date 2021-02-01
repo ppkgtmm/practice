@@ -1,7 +1,7 @@
 // cannot be instantiated directly
 abstract class Animal{
     // private name: string; // not accessible in child classes
-    // protected readonly name: string;
+    // protected readonly name: string; // acessible in child classes
     static owner: string = 'me';
     constructor(protected readonly name: string) {
         // this.name = name;        
@@ -21,9 +21,11 @@ class Dog extends Animal{
 
 }
 class Cat extends Animal{
-    // private name: string; // error
+    // error bc same name, but not same access modifier as superclass(Animal)
+    // private name: string;
     constructor(name : string) {
         super(name);
+        // this.name = name;
     }
     meow = () => console.log(`${this.name} is MEOWING`)
 

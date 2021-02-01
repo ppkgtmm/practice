@@ -7,6 +7,7 @@ function isPerson(object: any) : boolean {
     return 'name' in object && 'surname' in object;
     
 }
+// do type checj=king first when using union
 function greet(thing: string | Person) {
     if(typeof thing === "string"){
         console.log(`Hello ${thing}`);

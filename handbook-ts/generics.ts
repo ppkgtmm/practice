@@ -11,7 +11,7 @@ const identity: GenericIdentity = identityFunc;
 // const numIdentity: GenericIdentity<number> = identityFunc; // error not generic
 
 console.log(identity('some str'))
-// if no value initialized for filed with type checkind, ts throw error
+// if no value initialized for field with type checking, ts throw error
 class School {
     name: string = 'ASSC'
 }

@@ -39,7 +39,7 @@ console.log(mySquare);
 let square2 : Square = createSquare({ width: 3 });
 console.log(square2);
 
-// let square3 : Square = createSquare({ colour: "blue"});
+// let square3 : Square = createSquare({ colour: "blue"}); no props colour
 // console.log(square3);
 
 // cannot mutate RO array(including its props) or its elements

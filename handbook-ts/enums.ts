@@ -3,13 +3,15 @@ function shiftLeft(num:number) {
 }
 // Numeric enums can be mixed in computed and constant members.
 // enums without initializers either need to be first, or have to come after numeric enum
-//initialized with numeric constants or other constant enum members
+// initialized with numeric constants or other constant enum members
 enum E {
     A = shiftLeft(3),
     B = shiftLeft(4),
-    // C //error
+    // C // error cannot be after computed enums
     C = B * 2,
-    D = A | B // bitwise or
+    D = A | B, // bitwise or
+    E = 10,
+    F // allowed
 }
 
 console.log(E);
